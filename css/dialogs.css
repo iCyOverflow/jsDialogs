@@ -1,0 +1,61 @@
+
+#modalDialogShade{
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+
+  display: none; /* flex; */
+  flex-direction: column;
+
+  background: #000a;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+
+  font-family: sans-serif;
+}
+#modalDialog{
+  display: inline-block;
+  margin: 30vh auto 0;
+  padding: 32px 32px;
+  max-width: 40%;
+
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 15px #0008;
+
+  font-size: 10pt;
+  text-align: center;
+}
+h2#dialogHeader{
+  margin-top: 0px;
+  font-size: 10pt;
+}
+#dialogButtonsArea{
+  display: flex;
+  flex-direction: row-reverse;
+  width: 100%;
+  padding-top: 16px;
+}
+a.dialogButton{
+  border-radius: 5px;
+  padding: 5px 16px;
+  min-width: 64px;
+  text-decoration: none;
+  text-transform: capitalize;
+  color: white;
+  background-color: #999;
+  cursor: default;
+  user-select: none;
+}
+a.dialogButton + a.dialogButton{
+  margin-right: 8px;
+}
+a.dialogButton.defaultButton{
+  background-color: royalblue;
+}
+#modalDialog #dialogIcon{
+  margin-bottom: 16px;
+  width: 48px;
+}
