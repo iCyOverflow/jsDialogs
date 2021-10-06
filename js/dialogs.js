@@ -25,23 +25,41 @@ function showDialog(headerText, contentText, icon, buttons){
     dLog('contentText is required and should be of type String.');
     return false;
   }
-
+  // Default values if not provided.
   buttons = (typeof buttons != 'undefined') ? buttons : [{'label':'OK', 'action': hideDialog, 'default': true}];
   icon = (typeof icon != 'undefined') ? icon : 2  // 0-Stop, 1-Caution, 2-Alert/Note
 
-  // Expecting #modalDialogShade and #modalDialog to be on the page, styled as needed.
-  var dialogBox = document.getElementById('modalDialog');
+  // check for #dialogShader and clear it
   var dialogShader = document.getElementById('modalDialogShade');
-  var dialogIcon = document.getElementById('dialogIcon');
-  var dialogHeader = document.getElementById('dialogHeader');
-  var dialogContent = document.getElementById('dialogContent');
-  var dialogButtonsArea = document.getElementById('dialogButtonsArea');
-
-
-  if(!dialogBox || !dialogShader || !dialogIcon || !dialogHeader || !dialogContent || !dialogButtonsArea){
-    dLog('Some dialog elements could not be found. Are you sure you constructed your dialog box correctly in html?');
+  if(!dialogShader){
+    dLog('Could not find the #dialogShader DIV. Your HTML should have a DIV with ID dialogShader for this to work.');
     return false;
   }
+  dialogShader.innerHTML = '';
+
+  // Construct html dialog tags inside the #modalDialogShade
+  var dialogBox = document.createElement('DIV');
+  dialogBox.id = 'modalDialog';
+  dialogShader.appendChild(dialogBox);
+
+  var dialogIcon = document.createElement('IMG');
+  dialogIcon.id = 'dialogIcon';
+  dialogBox.appendChild(dialogIcon);
+
+  var dialogHeader = document.createElement('H2');
+  dialogHeader.id = 'dialogHeader';
+  dialogBox.appendChild(dialogHeader);
+
+  var dialogContent = document.createElement('P');
+  dialogContent.id = 'dialogContent';
+  dialogBox.appendChild(dialogContent);
+
+  var dialogButtonsArea = document.createElement('DIV');
+  dialogButtonsArea.id = 'dialogButtonsArea';
+  dialogBox.appendChild(dialogButtonsArea);
+
+
+
 
   // ** Build the dialogbox **
   switch(icon){

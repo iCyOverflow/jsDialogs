@@ -3,18 +3,13 @@
 A javascript module to show custom html in-page dialog boxes.
 ## Usage
 ### HTML
-The html should have the following:
+The html should have a DIV with the id `modalDialogShade`:
 ```HTML
 <div id="modalDialogShade">
-  <div id="modalDialog">
-    <img src="" alt="" id="dialogIcon">
-    <h2 id="dialogHeader"></h2>
-    <p id="dialogContent"></p>
-    <div id="dialogButtonsArea">
-    </div>
-  </div>
 </div>
 ```
+
+Typically, this will right before the closing `</body>` tag, followed with the `<script src='js/dialogs.js'></script>`
 
 ### CSS
 A sample CSS is included, modify as you wish.
